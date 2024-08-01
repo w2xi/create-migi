@@ -1,0 +1,39 @@
+{
+  "name": "create-migi",
+  "version": "0.0.1",
+  "description": "An easy way to start a new project",
+  "homepage": "https://github.com/w2xi/create-migi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w2xi/create-migi.git"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "nr build",
+    "dev": "pnpm run build --watch",
+    "build": "tsup bin --dts --format cjs,esm",
+    "release": "bumpp --commit --push --tag && pnpm publish",
+    "type": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "w2xi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "bumpp": "^9.4.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3",
+    "vitest": "^2.0.2"
+  }
+}
